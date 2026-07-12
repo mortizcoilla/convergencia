@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Convergencia — Hablemos</title>
+  <meta name="description" content="¿Necesitas asesoría o tienes dudas sobre nuestros materiales? Escríbenos por WhatsApp, email o completa el formulario. Respondemos en 24 horas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">Convergencia</a>
+      <nav class="header__nav" aria-label="Navegación principal">
+        <button class="nav__close menu-toggle" aria-label="Cerrar menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <ul class="nav__list">
+          <li><a href="tienda.html" class="nav__link">Tienda</a></li>
+          <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
+          <li><a href="contacto.html" class="nav__link" aria-current="page">Contacto</a></li>
+          <li><a href="index.html#servicios" class="btn btn-secondary btn--sm">Asesoría</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <a href="tienda.html" class="cart-btn" aria-label="Carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 3H2"/></svg>
+          <span class="cart-count" hidden>0</span>
+        </a>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--alt">
+      <div class="container">
+        <span class="section__eyebrow">Contacto</span>
+        <h1 class="section__title">Hablemos</h1>
+        <p class="section__intro">Respondemos en 24 horas hábiles. Escríbenos por el canal que te sea más cómodo.</p>
+
+        <div class="contacto-layout">
+          <form class="contacto-form card" novalidate>
+            <div class="card__body">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre">Nombre completo</label>
+                  <input type="text" id="nombre" name="nombre" required minlength="2">
+                  <span class="form-error">Ingresa al menos 2 caracteres.</span>
+                </div>
+                <div class="form-group">
+                  <label for="email">Correo electrónico</label>
+                  <input type="email" id="email" name="email" required>
+                  <span class="form-error">Ingresa un email válido.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Soy</label>
+                <div class="radio-group">
+                  <label><input type="radio" name="soy" value="docente" checked> Docente</label>
+                  <label><input type="radio" name="soy" value="padre"> Padre / Madre</label>
+                  <label><input type="radio" name="soy" value="estudiante"> Estudiante</label>
+                  <label><input type="radio" name="soy" value="otro"> Otro</label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="motivo">Motivo del contacto</label>
+                <select id="motivo" name="motivo" required>
+                  <option value="">Selecciona un motivo</option>
+                  <option value="asesoria">Asesoría personalizada</option>
+                  <option value="evaluacion">Evaluación Docente / ECEP</option>
+                  <option value="materiales">Dudas sobre materiales</option>
+                  <option value="compra">Compra mayorista</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" required minlength="10" maxlength="1000" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+                <p class="char-counter mt-sm" style="font-size:var(--text-xs);color:var(--color-text-muted);">0 caracteres</p>
+                <span class="form-error">El mensaje debe tener al menos 10 caracteres.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="checkbox-group">
+                  <input type="checkbox" name="newsletter" value="1">
+                  <span>Quiero recibir un material gratuito al mes y novedades de Convergencia.</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%;">Enviar mensaje</button>
+            </div>
+          </form>
+
+          <div class="contacto__info">
+            <h3>Otras formas de contactarnos</h3>
+            <p>Elige el canal que prefieras. Te responderemos con la misma atención.</p>
+
+            <div class="contacto__card">
+              <h4>WhatsApp</h4>
+              <p class="mt-sm">Respuesta rápida para dudas y compras.</p>
+              <a href="https://wa.me/56900000000" target="_blank" rel="noopener" class="btn btn-secondary btn--sm mt-md" style="width:100%;">Escríbenos por WhatsApp</a>
+            </div>
+
+            <div class="contacto__card">
+              <h4>Email</h4>
+              <p class="mt-sm"><a href="mailto:contacto@convergenciaedu.cl">contacto@convergenciaedu.cl</a></p>
+            </div>
+
+            <div class="contacto__card">
+              <h4>Horario de atención</h4>
+              <p class="mt-sm">Lunes a viernes, 9:00 a 18:00 hrs.<br>Atención presencial solo con cita previa.</p>
+            </div>
+
+            <h3 class="mt-xl">Síguenos</h3>
+            <div class="socials mt-md">
+              <a href="https://www.instagram.com/profesdiferenciales/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://www.linkedin.com/in/claudia-andrea-ortiz-coilla-18a148320/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo">Convergencia</a>
+          <p class="footer__tagline">Asesoría y materiales para la educación real</p>
+        </div>
+        <div>
+          <p class="footer__title">Links rápidos</p>
+          <ul class="footer__links">
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="index.html#servicios">Asesoría</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Contacto</p>
+          <div class="footer__contact">
+            <p><a href="mailto:contacto@convergenciaedu.cl">contacto@convergenciaedu.cl</a></p>
+            <p><a href="tel:+56900000000">+56 9 XXXX XXXX</a></p>
+            <p>Respondemos en 24 hrs hábiles</p>
+          </div>
+        </div>
+        <div>
+          <p class="footer__title">Síguenos</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/profesdiferenciales/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/claudia-andrea-ortiz-coilla-18a148320/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Convergencia. Todos los derechos reservados.</p>
+        <p>Materiales protegidos por derechos de autor.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>

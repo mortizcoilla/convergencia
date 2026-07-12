@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda | Convergencia — Materiales didácticos digitales</title>
+  <meta name="description" content="Catálogo de materiales didácticos PDF para preescolar y primer ciclo básico. Lenguaje, matemáticas, grafomotricidad y más.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="index.html" class="logo">Convergencia</a>
+      <nav class="header__nav" aria-label="Navegación principal">
+        <button class="nav__close menu-toggle" aria-label="Cerrar menú">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <ul class="nav__list">
+          <li><a href="tienda.html" class="nav__link" aria-current="page">Tienda</a></li>
+          <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
+          <li><a href="contacto.html" class="nav__link">Contacto</a></li>
+          <li><a href="index.html#servicios" class="btn btn-secondary btn--sm">Asesoría</a></li>
+        </ul>
+      </nav>
+      <div class="header__actions">
+        <button class="cart-btn" aria-label="Carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M6 6L5 3H2"/></svg>
+          <span class="cart-count" hidden>0</span>
+        </button>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--alt">
+      <div class="container">
+        <span class="section__eyebrow">Catálogo</span>
+        <h1 class="section__title">Materiales didácticos</h1>
+        <p class="section__intro">Recursos en PDF listos para imprimir, pensados para el aula chilena y adaptables a distintos ritmos de aprendizaje.</p>
+
+        <div class="tienda-layout">
+          <aside class="filtros" aria-label="Filtros de productos">
+            <button class="btn btn-outline btn--sm filtros__toggle" aria-expanded="false">Mostrar filtros</button>
+            <div class="filtros__content">
+              <div class="filtros__group">
+                <p class="filtros__title">Área</p>
+                <div class="filtros__options">
+                  <label class="filtros__option"><input type="checkbox" name="area" value="lenguaje"> Lenguaje</label>
+                  <label class="filtros__option"><input type="checkbox" name="area" value="matematicas"> Matemáticas</label>
+                  <label class="filtros__option"><input type="checkbox" name="area" value="grafomotricidad"> Grafomotricidad</label>
+                  <label class="filtros__option"><input type="checkbox" name="area" value="ciencias"> Ciencias</label>
+                  <label class="filtros__option"><input type="checkbox" name="area" value="sociedad"> Sociedad</label>
+                </div>
+              </div>
+              <div class="filtros__group">
+                <p class="filtros__title">Nivel</p>
+                <div class="filtros__options">
+                  <label class="filtros__option"><input type="checkbox" name="nivel" value="prekinder"> Prekinder</label>
+                  <label class="filtros__option"><input type="checkbox" name="nivel" value="kinder"> Kinder</label>
+                  <label class="filtros__option"><input type="checkbox" name="nivel" value="1-basico"> 1° Básico</label>
+                  <label class="filtros__option"><input type="checkbox" name="nivel" value="2-basico"> 2° Básico</label>
+                </div>
+              </div>
+              <div class="filtros__group">
+                <p class="filtros__title">Formato</p>
+                <div class="filtros__options">
+                  <label class="filtros__option"><input type="checkbox" name="formato" value="pdf-individual"> PDF individual</label>
+                  <label class="filtros__option"><input type="checkbox" name="formato" value="kit-progresivo"> Kit progresivo</label>
+                  <label class="filtros__option"><input type="checkbox" name="formato" value="gratuito"> Gratuito</label>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <div>
+            <div class="barra-orden">
+              <label class="sr-only" for="buscar">Buscar materiales</label>
+              <input type="search" id="buscar" class="buscar-input" placeholder="Buscar material..." style="padding:8px 12px;border:1px solid var(--color-border);border-radius:var(--border-radius);font-size:var(--text-sm);min-width:220px;">
+              <div class="ordenar">
+                <label for="ordenar" class="sr-only">Ordenar por</label>
+                <select id="ordenar" class="ordenar-select">
+                  <option value="relevancia">Relevancia</option>
+                  <option value="nuevos">Nuevos</option>
+                  <option value="precio-menor">Precio menor</option>
+                  <option value="precio-mayor">Precio mayor</option>
+                </select>
+              </div>
+            </div>
+            <p class="resultados">6 materiales</p>
+            <div class="grid-3 productos__grid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="logo">Convergencia</a>
+          <p class="footer__tagline">Asesoría y materiales para la educación real</p>
+        </div>
+        <div>
+          <p class="footer__title">Links rápidos</p>
+          <ul class="footer__links">
+            <li><a href="tienda.html">Tienda</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="index.html#servicios">Asesoría</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__title">Contacto</p>
+          <div class="footer__contact">
+            <p><a href="mailto:contacto@convergenciaedu.cl">contacto@convergenciaedu.cl</a></p>
+            <p><a href="tel:+56900000000">+56 9 XXXX XXXX</a></p>
+            <p>Respondemos en 24 hrs hábiles</p>
+          </div>
+        </div>
+        <div>
+          <p class="footer__title">Síguenos</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/profesdiferenciales/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/claudia-andrea-ortiz-coilla-18a148320/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Convergencia. Todos los derechos reservados.</p>
+        <p>Materiales protegidos por derechos de autor.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cart-modal" aria-hidden="true">
+    <div class="cart-modal__overlay"></div>
+    <div class="cart-modal__panel" role="dialog" aria-modal="true" aria-label="Carrito de compras">
+      <div class="cart-modal__header">
+        <h2 class="cart-modal__title">Tu carrito</h2>
+        <button class="cart-modal__close" aria-label="Cerrar carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="cart-modal__items"></div>
+      <div class="cart-modal__footer">
+        <div class="cart-modal__total"><span>Total</span><span>$0</span></div>
+        <button class="btn btn-primary cart-modal__checkout" type="button">Pedir por WhatsApp</button>
+        <p class="cart-modal__note">Te contactaremos para confirmar medio de pago.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
