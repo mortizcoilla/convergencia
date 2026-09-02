@@ -5,6 +5,7 @@ const socias = [
     nombre: "Tania Morales Aburto",
     linea: "Currículum y Evaluación",
     bio: "Profesora general básica con magíster en Ciencias de la Educación con mención en currículum. Más de 20 años liderando procesos de gestión curricular, instalación de modelos pedagógicos institucionales y acompañamiento a equipos directivos.",
+    email: "tania.morales@convergencia.pro",
     img: "/images/team/tania-morales.webp",
     acento: "ink",
   },
@@ -12,6 +13,7 @@ const socias = [
     nombre: "Tania Gamboa Chandia",
     linea: "Inclusión y PIE",
     bio: "Educadora diferencial, candidata a magíster en Gestión y Dirección Educacional. Más de 13 años en Programas de Integración Escolar: coordinación de equipos, implementación de DUA y diseño de prácticas inclusivas.",
+    email: "tania.gamboa@convergencia.pro",
     img: "/images/team/tania-gamboa.webp",
     acento: "soft",
   },
@@ -19,6 +21,7 @@ const socias = [
     nombre: "Claudia Ortiz Coilla",
     linea: "TEA y Relatoría",
     bio: "Educadora diferencial, magíster en Intervención y Evaluación ABA en Trastorno del Espectro Autista. Más de 10 años en PIE con foco en TEA, DUA, Decretos 170 y 83, y relatoría a equipos docentes.",
+    email: "claudia.ortiz@convergencia.pro",
     img: "/images/team/claudia-ortiz.webp",
     acento: "accent",
   },
@@ -45,6 +48,13 @@ const socias = [
           <h3 class="equipo__nombre">{s.nombre}</h3>
           <p class="equipo__linea">{s.linea}</p>
           <p class="equipo__bio">{s.bio}</p>
+          <a
+            href={`mailto:${s.email}?subject=${encodeURIComponent('Consulta desde el sitio web')}`}
+            class="equipo__contact"
+            aria-label={`Escribir a ${s.nombre}`}
+          >
+            Escribir
+          </a>
         </article>
       ))}
     </div>
@@ -118,5 +128,27 @@ const socias = [
     font-size: 0.92rem;
     line-height: 1.6;
     margin: 0 1.6rem;
+  }
+
+  .equipo__contact {
+    display: inline-block;
+    margin: 1.6rem 1.6rem 0.4rem;
+    padding: 0.65rem 1.4rem;
+    font-family: inherit;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+  }
+  .equipo__contact:hover {
+    background: var(--accent);
+    color: var(--paper);
+    transform: translateY(-1px);
   }
 </style>
