@@ -1,0 +1,198 @@
+---
+// Hero con WebGL — red de partículas convergentes
+---
+
+<section class="hero" id="top">
+  <div class="hero__canvas" data-hero-canvas aria-hidden="true"></div>
+
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="container hero__content">
+    <p class="eyebrow hero__eyebrow" data-reveal>Convergencia · Formación Docente</p>
+
+    <h1 class="hero__title" data-reveal>
+      Formación que nace <span class="accent">&nbsp;desde el aula&nbsp;</span><br />
+      y vuelve al aula.
+    </h1>
+
+    <p class="hero__lede" data-reveal>
+      Un espacio de formación y asesoramiento para docentes, equipos directivos
+      y equipos PIE. Acompañamos comunidades educativas a construir escuelas
+      más inclusivas y equitativas — con herramientas concretas, estrategias
+      aplicables y convicción práctica.
+    </p>
+
+    <div class="hero__ctas" data-reveal>
+      <a href="#taller" class="btn btn--accent">Conocer el próximo taller</a>
+      <a href="#contacto" class="btn btn--ghost">Pedir asesoría para tu equipo</a>
+    </div>
+
+    <div class="hero__meta" data-reveal-group>
+      <div class="hero__meta-item" data-reveal>
+        <span class="hero__meta-num">+20</span>
+        <span class="hero__meta-label">años de experiencia pedagógica combinada</span>
+      </div>
+      <div class="hero__meta-item" data-reveal>
+        <span class="hero__meta-num">3</span>
+        <span class="hero__meta-label">líneas de especialización complementarias</span>
+      </div>
+      <div class="hero__meta-item" data-reveal>
+        <span class="hero__meta-num">100%</span>
+        <span class="hero__meta-label">desde la realidad del aula</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Desplázate</span>
+    <svg width="14" height="22" viewBox="0 0 14 22" fill="none">
+      <path d="M7 1V20M7 20L1 14M7 20L13 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: var(--ink);
+    color: var(--surface);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-block: 9rem 5rem;
+  }
+
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero__canvas :global(canvas) {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 35%,
+        color-mix(in srgb, var(--ink) 25%, transparent) 0%,
+        color-mix(in srgb, var(--ink) 70%, transparent) 100%),
+      linear-gradient(180deg,
+        color-mix(in srgb, var(--ink) 90%, transparent) 0%,
+        color-mix(in srgb, var(--ink) 75%, transparent) 40%,
+        color-mix(in srgb, var(--ink) 92%, transparent) 100%);
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 920px;
+  }
+
+  .hero__eyebrow {
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero__title {
+    color: var(--surface);
+    margin-bottom: 1.8rem;
+    max-width: 22ch;
+    text-shadow: 0 2px 30px color-mix(in srgb, var(--ink) 60%, transparent);
+  }
+  .hero__title .accent {
+    color: var(--accent);
+  }
+
+  .hero__lede {
+    color: color-mix(in srgb, var(--surface) 92%, transparent);
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.55;
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+    text-shadow: 0 1px 20px color-mix(in srgb, var(--ink) 70%, transparent);
+  }
+
+  .hero__ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+  .hero__ctas .btn--ghost {
+    color: var(--surface);
+    border-color: color-mix(in srgb, var(--surface) 30%, transparent);
+  }
+  .hero__ctas .btn--ghost:hover {
+    background: color-mix(in srgb, var(--surface) 8%, transparent);
+    border-color: var(--surface);
+  }
+
+  .hero__meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--surface) 14%, transparent);
+  }
+  @media (max-width: 720px) {
+    .hero__meta { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  .hero__meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .hero__meta-num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 2.4rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .hero__meta-label {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--surface) 70%, transparent);
+    line-height: 1.4;
+  }
+
+  .hero__scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.72rem;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--surface) 50%, transparent);
+    animation: scrollBob 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollBob {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.7; }
+    50%      { transform: translateX(-50%) translateY(6px); opacity: 1; }
+  }
+</style>
+
+<script>
+  import { initConvergenciaCanvas } from "./ConvergenciaCanvas";
+
+  const container = document.querySelector<HTMLElement>("[data-hero-canvas]");
+  if (container) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const destroy = initConvergenciaCanvas({ container, reducedMotion });
+    // Cleanup en navegación client-side de Astro
+    document.addEventListener("astro:before-swap", destroy, { once: true });
+  }
+</script>

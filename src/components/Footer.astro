@@ -1,0 +1,114 @@
+---
+import Logo from "./Logo.astro";
+const year = new Date().getFullYear();
+---
+
+<footer class="footer" id="contacto">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <Logo size="md" showTagline />
+        <p class="footer__pitch">
+          Asesoramiento y formación que nace desde el aula y vuelve al aula.
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Conversemos</h4>
+        <a href="mailto:hola@convergencia.cl" class="footer__link link-underline">hola@convergencia.cl</a>
+        <a href="https://instagram.com/convergencia.formacion" target="_blank" rel="noopener" class="footer__link link-underline">@convergencia.formacion</a>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Servicios</h4>
+        <a href="#que-hacemos" class="footer__link link-underline">Acompañamiento</a>
+        <a href="#que-hacemos" class="footer__link link-underline">Capacitaciones</a>
+        <a href="#que-hacemos" class="footer__link link-underline">Asesorías</a>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Sitio</h4>
+        <a href="https://www.convergencia.cl" class="footer__link link-underline">www.convergencia.cl</a>
+        <span class="footer__link footer__muted">Santiago, Chile</span>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {year} Convergencia. Todos los derechos reservados.</span>
+      <span>Formación que nace desde el aula y vuelve al aula.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink);
+    color: var(--surface);
+    padding-block: clamp(4rem, 8vw, 6rem) 2rem;
+    margin-top: 4rem;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--surface) 14%, transparent);
+  }
+  @media (max-width: 880px) {
+    .footer__top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+  @media (max-width: 520px) {
+    .footer__top { grid-template-columns: 1fr; }
+  }
+
+  .footer__brand :global(.logo__word) { color: var(--surface); }
+  .footer__brand :global(.logo__tag) { color: var(--muted); }
+  .footer__brand :global(.logo__iso path) { stroke: var(--surface); }
+
+  .footer__pitch {
+    margin-top: 1.2rem;
+    color: color-mix(in srgb, var(--surface) 70%, transparent);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    max-width: 28ch;
+  }
+
+  .footer__title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .footer__link {
+    color: var(--surface);
+    font-size: 0.95rem;
+    width: fit-content;
+  }
+  .footer__muted { color: color-mix(in srgb, var(--surface) 60%, transparent); }
+
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 0.82rem;
+    color: color-mix(in srgb, var(--surface) 55%, transparent);
+  }
+  @media (max-width: 720px) {
+    .footer__bottom { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+  }
+</style>

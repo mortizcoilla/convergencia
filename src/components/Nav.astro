@@ -1,0 +1,104 @@
+---
+import Logo from "./Logo.astro";
+
+const links = [
+  { href: "#que-hacemos", label: "Qué hacemos" },
+  { href: "#sello", label: "Nuestro sello" },
+  { href: "#taller", label: "Próximo taller" },
+  { href: "#equipo", label: "Equipo" },
+  { href: "#contacto", label: "Contacto" },
+];
+---
+
+<header class="nav" data-nav>
+  <div class="container nav__inner">
+    <Logo size="md" />
+
+    <nav class="nav__links" aria-label="Navegación principal">
+      {links.map((l) => (
+        <a href={l.href} class="link-underline nav__link">{l.label}</a>
+      ))}
+    </nav>
+
+    <a href="#contacto" class="btn btn--primary nav__cta">Pedir asesoría</a>
+
+    <button class="nav__toggle" aria-label="Abrir menú" data-nav-toggle>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(14px);
+    -webkit-backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--t-base) var(--ease-out),
+                background var(--t-base) var(--ease-out);
+  }
+  .nav.is-scrolled {
+    border-bottom-color: color-mix(in srgb, var(--muted) 18%, transparent);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+    gap: 2rem;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .nav__link { color: var(--ink-soft); }
+
+  .nav__cta { padding: 0.7rem 1.2rem; font-size: 0.85rem; }
+
+  .nav__toggle {
+    display: none;
+    background: none;
+    border: 0;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+  }
+  .nav__toggle span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--ink);
+    transition: transform var(--t-base) var(--ease-out),
+                opacity var(--t-base) var(--ease-out);
+  }
+
+  @media (max-width: 880px) {
+    .nav__links { display: none; }
+    .nav__cta { display: none; }
+    .nav__toggle { display: flex; }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector("[data-nav]");
+  if (nav) {
+    const onScroll = () => {
+      nav.classList.toggle("is-scrolled", window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+  }
+</script>

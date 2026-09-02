@@ -1,0 +1,5 @@
+# Convergencia — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://convergencia.pro/sitemap-index.xml

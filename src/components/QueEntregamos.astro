@@ -1,0 +1,139 @@
+---
+// Qué entregamos — 5 entregables
+const entregables = [
+  {
+    title: "Capacitaciones prácticas",
+    text: "Contenidos aplicables a la realidad del aula desde el primer día.",
+  },
+  {
+    title: "Acompañamiento contextualizado",
+    text: "Respetamos la realidad, los tiempos y las necesidades de cada institución.",
+  },
+  {
+    title: "Estrategias inclusivas",
+    text: "Basadas en el DUA, el MBE y las políticas públicas vigentes.",
+  },
+  {
+    title: "Trabajo colaborativo",
+    text: "Articulamos a docentes, equipos directivos y PIE para construir soluciones sostenibles.",
+  },
+  {
+    title: "Impacto real",
+    text: "Porque una capacitación cobra sentido cuando lo aprendido transforma la práctica.",
+  },
+];
+---
+
+<section class="entregamos" id="entregamos">
+  <div class="container">
+    <div class="entregamos__head">
+      <p class="eyebrow" data-reveal>Qué entregamos</p>
+      <h2 class="entregamos__title" data-reveal>
+        <span class="accent">&nbsp;Herramientas concretas&nbsp;</span> para transformar la práctica.
+      </h2>
+      <p class="entregamos__sub" data-reveal>
+        Acompañamos a las comunidades educativas para que todos los
+        estudiantes tengan oportunidades reales de aprender, participar
+        y desarrollarse.
+      </p>
+    </div>
+
+    <div class="entregamos__rail" data-reveal-group>
+      {entregables.map((e, i) => (
+        <article class="entregamos__item" data-reveal>
+          <span class="entregamos__num">{String(i + 1).padStart(2, "0")}</span>
+          <h3 class="entregamos__item-title">{e.title}</h3>
+          <p class="entregamos__item-text">{e.text}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="entregamos__close" data-reveal>
+      <p class="entregamos__close-line">
+        Porque una educación inclusiva no es un ideal,
+        <span class="accent">&nbsp;es una decisión que transformamos juntos.&nbsp;</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .entregamos { background: var(--surface); }
+
+  .entregamos__head { max-width: 760px; margin-bottom: 4.5rem; }
+  .entregamos__title { margin-top: 1.2rem; margin-bottom: 1.5rem; }
+  .entregamos__sub {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 56ch;
+  }
+
+  .entregamos__rail {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent);
+  }
+  @media (max-width: 980px) {
+    .entregamos__rail { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .entregamos__rail { grid-template-columns: 1fr; }
+  }
+
+  .entregamos__item {
+    padding: 2.5rem 1.5rem 2.5rem 0;
+    border-right: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+    transition: background var(--t-base) var(--ease-out);
+  }
+  .entregamos__item:last-child { border-right: 0; }
+  .entregamos__item:hover {
+    background: var(--paper);
+  }
+  @media (max-width: 980px) {
+    .entregamos__item {
+      padding: 2rem 1.2rem;
+      border-right: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+    }
+  }
+
+  .entregamos__num {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .entregamos__item-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+  .entregamos__item-text {
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .entregamos__close {
+    text-align: center;
+    margin-top: 4rem;
+  }
+  .entregamos__close-line {
+    font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  .entregamos__close-line .accent {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 0.4rem;
+  }
+</style>

@@ -1,80 +1,43 @@
-# Convergencia
+# Astro Starter Kit: Minimal
 
-Asesoría y materiales para la educación real.
-
-Sitio web estático de 4 páginas para el emprendimiento Convergencia: materiales didácticos digitales + asesoría profesional para docentes.
-
-## Estructura
-
-```
-convergencia/
-├── index.html          # Landing page
-├── tienda.html         # Catálogo con filtros y carrito
-├── nosotros.html       # Perfil de la creadora y valores
-├── contacto.html       # Formulario y canales de contacto
-├── 404.html            # Página no encontrada
-├── css/
-│   └── styles.css      # Estilos centralizados
-├── js/
-│   └── app.js          # Lógica de navegación, tienda y carrito
-├── assets/
-│   ├── images/         # Placeholders para productos, equipo y hero
-│   └── samples/        # PDFs de muestra (por agregar)
-└── .nojekyll           # Para publicar en GitHub Pages sin Jekyll
+```sh
+npm create astro@latest -- --template minimal
 ```
 
-## Tecnologías
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-- HTML5 semántico
-- CSS3 con variables nativas
-- JavaScript ES6+ vanilla
-- Sin frameworks, sin build steps, sin dependencias de backend
+## 🚀 Project Structure
 
-## Cómo usar localmente
+Inside of your Astro project, you'll see the following folders and files:
 
-1. Clona o descarga este repositorio.
-2. Abre `index.html` en tu navegador.
-3. Para probar la tienda y el carrito, usa un servidor local simple:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js
-npx serve .
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
 ```
 
-Luego visita `http://localhost:8000`.
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## Carrito y checkout
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-- Los productos se añaden al carrito y se guardan en `localStorage`.
-- El checkout redirige a WhatsApp con el resumen del pedido.
-- El número de WhatsApp es un placeholder; actualízalo en `js/app.js` (`checkoutWhatsApp`).
+Any static assets, like images, can be placed in the `public/` directory.
 
-## Placeholders
+## 🧞 Commands
 
-Las imágenes y PDFs de muestra son placeholders. Reemplázalos por:
+All commands are run from the root of the project, from a terminal:
 
-- `assets/images/productos/*.webp` — portadas de los PDFs.
-- `assets/images/equipo/creadora.webp` — foto de la creadora.
-- `assets/images/hero/aula.webp` — imagen de fondo del hero.
-- `assets/samples/*.pdf` — versiones de muestra de 2-3 páginas.
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## Personalización
+## 👀 Want to learn more?
 
-- Paleta y espaciado: `css/styles.css` → `:root`.
-- Productos: `js/app.js` → `const productos`.
-- Datos de contacto: busca los placeholders en todos los HTML y en `js/app.js`.
-
-## Deploy en GitHub Pages
-
-1. Sube el repositorio a GitHub.
-2. Ve a **Settings > Pages**.
-3. Selecciona la rama principal y la carpeta raíz (`/`).
-4. El archivo `.nojekyll` evita que GitHub Pages procese el sitio con Jekyll.
-
-## Licencia
-
-© 2026 Convergencia. Todos los derechos reservados.
-Materiales protegidos por derechos de autor.
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

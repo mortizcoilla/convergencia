@@ -1,0 +1,138 @@
+---
+// Qué hacemos — 3 columnas
+const servicios = [
+  {
+    n: "01",
+    title: "Acompañamos",
+    text: "A equipos directivos, líderes pedagógicos, docentes y equipos PIE en sus desafíos del día a día. Nos insertamos en la comunidad educativa y caminamos junto a ella.",
+  },
+  {
+    n: "02",
+    title: "Formamos",
+    text: "A través de capacitaciones prácticas, contextualizadas y alineadas con los desafíos reales del aula. Cursos, talleres y programas diseñados para aplicar desde el primer día.",
+  },
+  {
+    n: "03",
+    title: "Asesoramos",
+    text: "Entregando estrategias y herramientas concretas, transferibles y aplicables a la práctica educativa. Sin recetas: cada comunidad tiene su realidad y su camino.",
+  },
+];
+---
+
+<section class="hacemos" id="que-hacemos">
+  <div class="container">
+    <div class="hacemos__head">
+      <p class="eyebrow" data-reveal>Qué hacemos</p>
+      <h2 class="hacemos__title" data-reveal>
+        Acompañamos, formamos y asesoramos a comunidades educativas para
+        construir escuelas más <span class="accent">&nbsp;inclusivas&nbsp;</span> y
+        <span class="accent">&nbsp;equitativas&nbsp;</span>.
+      </h2>
+    </div>
+
+    <div class="hacemos__grid" data-reveal-group>
+      {servicios.map((s) => (
+        <article class="hacemos__card" data-reveal>
+          <span class="hacemos__num">{s.n}</span>
+          <h3 class="hacemos__card-title">{s.title}</h3>
+          <p class="hacemos__card-text">{s.text}</p>
+          <span class="hacemos__card-arrow" aria-hidden="true">→</span>
+        </article>
+      ))}
+    </div>
+
+    <p class="hacemos__commitment" data-reveal>
+      Trabajamos junto a cada institución para&nbsp;<strong>identificar y disminuir las barreras</strong>&nbsp;para el aprendizaje y la participación, promoviendo una cultura de&nbsp;<em>colaboración</em>,&nbsp;<em>innovación</em>&nbsp;y&nbsp;<em>respeto por la diversidad</em>.
+    </p>
+  </div>
+</section>
+
+<style>
+  .hacemos {
+    background: var(--paper);
+  }
+  .hacemos__head { max-width: 880px; margin-bottom: 4rem; }
+  .hacemos__title { margin-top: 1.2rem; }
+
+  .hacemos__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  @media (max-width: 880px) {
+    .hacemos__grid { grid-template-columns: 1fr; }
+  }
+
+  .hacemos__card {
+    position: relative;
+    background: var(--surface);
+    padding: 2.4rem 2rem 3rem;
+    border: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+    border-radius: var(--radius);
+    transition:
+      transform var(--t-base) var(--ease-out),
+      border-color var(--t-base) var(--ease-out),
+      box-shadow var(--t-base) var(--ease-out);
+    overflow: hidden;
+  }
+  .hacemos__card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--t-base) var(--ease-out);
+  }
+  .hacemos__card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink-soft);
+    box-shadow: 0 20px 40px -20px color-mix(in srgb, var(--ink) 22%, transparent);
+  }
+  .hacemos__card:hover::before { transform: scaleX(1); }
+
+  .hacemos__num {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .hacemos__card-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+  .hacemos__card-text {
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .hacemos__card-arrow {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.8rem;
+    color: var(--muted);
+    font-size: 1.2rem;
+    transition: transform var(--t-base) var(--ease-out),
+                color var(--t-base) var(--ease-out);
+  }
+  .hacemos__card:hover .hacemos__card-arrow {
+    transform: translateX(6px);
+    color: var(--accent);
+  }
+
+  .hacemos__commitment {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .hacemos__commitment strong { color: var(--ink); }
+  .hacemos__commitment em { color: var(--accent); font-style: italic; }
+</style>

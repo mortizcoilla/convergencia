@@ -1,0 +1,81 @@
+---
+// Qué nos mueve — convicción
+---
+
+<section class="nos-mueve" id="mueve">
+  <div class="container container--narrow">
+    <p class="eyebrow" data-reveal>Lo que nos mueve</p>
+
+    <h2 class="nos-mueve__title" data-reveal>
+      Creemos en una educación donde la <span class="accent">&nbsp;diversidad&nbsp;</span> no
+      sea vista como una dificultad, sino como parte de la realidad de cada aula.
+    </h2>
+
+    <div class="nos-mueve__pillars" data-reveal-group>
+      <div class="nos-mueve__pillar" data-reveal>
+        <span class="nos-mueve__pillar-mark" aria-hidden="true">✦</span>
+        <h3 class="nos-mueve__pillar-title">Todos pueden aprender</h3>
+        <p class="nos-mueve__pillar-text">
+          Diseñamos comunidades educativas donde cada estudiante tiene
+          oportunidades reales de aprender, participar y progresar.
+        </p>
+      </div>
+
+      <div class="nos-mueve__pillar" data-reveal>
+        <span class="nos-mueve__pillar-mark" aria-hidden="true">✦</span>
+        <h3 class="nos-mueve__pillar-title">Inclusión en la práctica</h3>
+        <p class="nos-mueve__pillar-text">
+          La inclusión no es un ideal: es una decisión que se construye
+          cada día en el aula, con herramientas concretas y convicción.
+        </p>
+      </div>
+
+      <div class="nos-mueve__pillar" data-reveal>
+        <span class="nos-mueve__pillar-mark" aria-hidden="true">✦</span>
+        <h3 class="nos-mueve__pillar-title">Trabajo colaborativo</h3>
+        <p class="nos-mueve__pillar-text">
+          Creemos en la fuerza del trabajo entre equipos directivos,
+          docentes, PIE y familias para construir soluciones duraderas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .nos-mueve {
+    background: var(--surface);
+  }
+  .nos-mueve__title {
+    margin: 1.2rem 0 4rem;
+    max-width: 26ch;
+  }
+
+  .nos-mueve__pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding-top: 3rem;
+    border-top: 1px solid color-mix(in srgb, var(--muted) 22%, transparent);
+  }
+  @media (max-width: 880px) {
+    .nos-mueve__pillars { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .nos-mueve__pillar-mark {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  .nos-mueve__pillar-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .nos-mueve__pillar-text {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

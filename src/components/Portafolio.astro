@@ -1,0 +1,355 @@
+---
+// Portafolio — casos con imagen, casos más concretos
+const casos = [
+  {
+    n: "01",
+    tipo: "Currículum",
+    img: "/images/portfolio/currículum.webp",
+    institucion: "Colegio Santa María",
+    comuna: "Región Metropolitana",
+    año: "2024 – 2025",
+    desafio: "Implementar un modelo pedagógico institucional de lectura y escritura alineado con el Decreto 67.",
+    rol: "Diseño del modelo, instalación con UTP, seguimiento a docentes de primer ciclo durante un año escolar completo.",
+    metric: "12 meses",
+  },
+  {
+    n: "02",
+    tipo: "Inclusión",
+    img: "/images/portfolio/inclusion.webp",
+    institucion: "Colegio El Mirador",
+    comuna: "Región del Biobío",
+    año: "2023 – 2024",
+    desafio: "Fortalecer la coordinación PIE y la implementación del Diseño Universal para el Aprendizaje (DUA) en aula.",
+    rol: "Capacitación al equipo PIE, acompañamiento a docentes de aula, ajustes a PACI según Decreto 170.",
+    metric: "8 meses",
+  },
+  {
+    n: "03",
+    tipo: "Formación",
+    img: "/images/portfolio/formacion.webp",
+    institucion: "Red Colegio Andino",
+    comuna: "Varias regiones",
+    año: "2024",
+    desafio: "Formar a equipos directivos en planificación inversa y diseño de evaluaciones formativas.",
+    rol: "Programa de 4 talleres online + 2 sesiones de trabajo aplicadas con cada equipo directivo.",
+    metric: "4 talleres",
+  },
+  {
+    n: "04",
+    tipo: "Acompañamiento",
+    img: "/images/portfolio/acompanamiento.webp",
+    institucion: "Liceo Técnico Puerto Montt",
+    comuna: "Región de Los Lagos",
+    año: "2024",
+    desafio: "Re-diseño del plan de apoyo a la diversidad desde una mirada DUA y de trabajo colaborativo.",
+    rol: "Diagnóstico institucional, plan de mejora, mentoría mensual a UTP durante un semestre.",
+    metric: "6 meses",
+  },
+];
+---
+
+<section class="portafolio" id="portafolio">
+  <div class="container">
+    <header class="portafolio__head" data-reveal>
+      <div class="portafolio__head-row">
+        <p class="eyebrow">Portafolio</p>
+        <span class="portafolio__count">
+          <span class="portafolio__count-n">04</span>
+          <span class="portafolio__count-label">casos recientes</span>
+        </span>
+      </div>
+
+      <h2 class="portafolio__title">
+        Algunos trabajos que hemos
+        <span class="accent">&nbsp;caminado junto a comunidades educativas&nbsp;</span>.
+      </h2>
+
+      <p class="portafolio__sub">
+        Casos anonimizados para resguardar la confidencialidad de las
+        instituciones. Si quieres conocer más detalles, conversamos.
+      </p>
+    </header>
+
+    <div class="cases" data-reveal-group>
+      {casos.map((c, i) => (
+        <article class={`case case--pos${i + 1}`} data-reveal>
+          <a href="#contacto" class="case__link" aria-label={`Ver más sobre ${c.institucion}`}>
+            <div class="case__media">
+              <img src={c.img} alt="" loading="lazy" />
+              <span class="case__num">{c.n}</span>
+            </div>
+
+            <div class="case__body">
+              <div class="case__meta">
+                <span class="case__type">{c.tipo}</span>
+                <span class="case__year">{c.año}</span>
+              </div>
+
+              <h3 class="case__inst">{c.institucion}</h3>
+              <p class="case__loc">{c.comuna}</p>
+
+              <p class="case__desafio">{c.desafio}</p>
+
+              <div class="case__foot">
+                <span class="case__metric">{c.metric}</span>
+                <span class="case__arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .portafolio { background: var(--paper); }
+
+  .portafolio__head { margin-bottom: 3.5rem; }
+  .portafolio__head-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.4rem;
+  }
+  .portafolio__count {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+  .portafolio__count-n {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.8rem;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .portafolio__count-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .portafolio__title {
+    margin-bottom: 1.4rem;
+    max-width: 26ch;
+  }
+  .portafolio__sub {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 56ch;
+  }
+
+  /* ---------- Cases (collage asimétrico) ---------- */
+  .cases {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 200px;
+    gap: 1rem;
+  }
+  @media (max-width: 980px) {
+    .cases { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+  }
+  @media (max-width: 520px) {
+    .cases { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  }
+
+  /* Posiciones asimétricas tipo collage:
+     pos1: HERO grande a la izquierda (4 cols × 2 rows)
+     pos2: card vertical a la derecha arriba (2 cols × 1 row)
+     pos3: card vertical a la derecha abajo (2 cols × 1 row)
+     pos4: card wide al fondo (6 cols × 1 row) */
+  .case--pos1 {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+  .case--pos2 {
+    grid-column: span 2;
+  }
+  .case--pos3 {
+    grid-column: span 2;
+  }
+  .case--pos4 {
+    grid-column: span 6;
+  }
+  @media (max-width: 980px) {
+    .case--pos1 { grid-column: span 2; grid-row: span 2; }
+    .case--pos2, .case--pos3, .case--pos4 { grid-column: span 2; grid-row: span 1; }
+  }
+  @media (max-width: 520px) {
+    .case--pos1, .case--pos2, .case--pos3, .case--pos4 {
+      grid-column: span 1;
+      grid-row: auto;
+    }
+  }
+
+  .case {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+    border-radius: 8px;
+    overflow: hidden;
+    transition:
+      transform 500ms var(--ease-out),
+      box-shadow 500ms var(--ease-out),
+      border-color 500ms var(--ease-out);
+  }
+
+  .case:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 50px -25px color-mix(in srgb, var(--ink) 30%, transparent);
+    border-color: color-mix(in srgb, var(--ink) 22%, transparent);
+  }
+
+  .case__link {
+    display: grid;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+  /* Para pos1 (hero), layout horizontal: media a la izquierda, body a la derecha */
+  .case--pos1 .case__link {
+    grid-template-columns: 1.3fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  @media (max-width: 980px) {
+    .case--pos1 .case__link { grid-template-columns: 1fr; grid-template-rows: 1fr auto; }
+  }
+  /* Para pos4 (wide), layout horizontal: media a un lado, body al otro */
+  .case--pos4 .case__link {
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+  }
+  @media (max-width: 980px) {
+    .case--pos4 .case__link { grid-template-columns: 1fr; grid-template-rows: 220px auto; }
+  }
+
+  .case__media {
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    min-height: 0;
+  }
+  .case--pos2 .case__media,
+  .case--pos3 .case__media {
+    aspect-ratio: 4 / 3;
+  }
+  .case__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 800ms var(--ease-out);
+    opacity: 0.95;
+  }
+  .case:hover .case__media img {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+
+  .case__num {
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 4.5rem;
+    line-height: 0.85;
+    color: var(--surface);
+    text-shadow: 0 2px 16px color-mix(in srgb, var(--ink) 60%, transparent);
+    letter-spacing: -0.02em;
+  }
+  .case--pos1 .case__num { font-size: 7rem; top: 1.4rem; left: 1.8rem; }
+  .case--pos4 .case__num { font-size: 5.5rem; }
+  .case--pos2 .case__num, .case--pos3 .case__num { font-size: 3.2rem; }
+
+  .case__body {
+    padding: 1.5rem 1.6rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .case--pos1 .case__body { padding: 2.5rem 2.5rem 2.2rem; gap: 0.7rem; }
+  .case--pos4 .case__body { padding: 2rem 2.2rem 1.8rem; }
+
+  .case__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+  }
+  .case__type {
+    display: inline-block;
+    padding: 0.32rem 0.7rem;
+    background: var(--ink);
+    color: var(--surface);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .case__year {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 0.9rem;
+  }
+
+  .case__inst {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .case--pos1 .case__inst { font-size: 2rem; }
+  .case--pos4 .case__inst { font-size: 1.55rem; }
+  .case__loc {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 0.2rem;
+  }
+  .case__desafio {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0.4rem 0 0.4rem;
+  }
+  .case--pos1 .case__desafio { font-size: 1.1rem; max-width: 42ch; }
+  .case--pos4 .case__desafio { font-size: 1.02rem; max-width: 60ch; }
+  /* En pos2 y pos3 (cards chicas), el desafío no se muestra */
+  .case--pos2 .case__desafio,
+  .case--pos3 .case__desafio { display: none; }
+
+  .case__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  }
+  .case__metric {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .case__arrow {
+    color: var(--muted);
+    display: inline-flex;
+    transition: transform 500ms var(--ease-out), color 500ms var(--ease-out);
+  }
+  .case:hover .case__arrow {
+    transform: translateX(6px);
+    color: var(--accent);
+  }
+</style>

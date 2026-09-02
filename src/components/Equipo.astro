@@ -1,0 +1,122 @@
+---
+// Equipo — 3 socias con caricaturas placeholder
+const socias = [
+  {
+    nombre: "Tania Morales Aburto",
+    linea: "Currículum y Evaluación",
+    bio: "Profesora general básica con magíster en Ciencias de la Educación. Más de 20 años liderando procesos de gestión curricular, instalación de modelos pedagógicos institucionales y acompañamiento a equipos directivos.",
+    img: "/images/team/tania-morales.webp",
+    acento: "ink",
+  },
+  {
+    nombre: "Tania Gamboa Chandia",
+    linea: "Inclusión y PIE",
+    bio: "Educadora diferencial, candidata a magíster en Gestión y Dirección Educacional. Más de 13 años en Programas de Integración Escolar: coordinación de equipos, implementación de DUA y diseño de prácticas inclusivas.",
+    img: "/images/team/tania-gamboa.webp",
+    acento: "soft",
+  },
+  {
+    nombre: "Claudia Ortiz Coilla",
+    linea: "TEA y Relatoría",
+    bio: "Educadora diferencial, magíster en Intervención y Evaluación ABA en Trastorno del Espectro Autista. Más de 10 años en PIE con foco en TEA, DUA, Decretos 170 y 83, y relatoría a equipos docentes.",
+    img: "/images/team/claudia-ortiz.webp",
+    acento: "accent",
+  },
+];
+---
+
+<section class="equipo" id="equipo">
+  <div class="container">
+    <div class="equipo__head">
+      <p class="eyebrow" data-reveal>Quiénes somos</p>
+      <h2 class="equipo__title" data-reveal>
+        Tres profesionales en activo,
+        <span class="accent">&nbsp;una convicción compartida&nbsp;</span>: la
+        inclusión se construye en la práctica.
+      </h2>
+    </div>
+
+    <div class="equipo__grid" data-reveal-group>
+      {socias.map((s) => (
+        <article class={`equipo__card equipo__card--${s.acento}`} data-reveal>
+          <div class="equipo__avatar">
+            <img src={`${s.img}?v=2`} alt={`Caricatura de ${s.nombre}`} loading="lazy" />
+          </div>
+          <h3 class="equipo__nombre">{s.nombre}</h3>
+          <p class="equipo__linea">{s.linea}</p>
+          <p class="equipo__bio">{s.bio}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .equipo { background: var(--surface); }
+
+  .equipo__head { max-width: 820px; margin-bottom: 4rem; }
+  .equipo__title { margin-top: 1.2rem; }
+
+  .equipo__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+  }
+  @media (max-width: 880px) {
+    .equipo__grid { grid-template-columns: 1fr; }
+  }
+
+  .equipo__card {
+    padding: 0 0 2.2rem;
+    background: var(--paper);
+    border: 1px solid color-mix(in srgb, var(--muted) 16%, transparent);
+    border-radius: 6px;
+    overflow: hidden;
+    transition:
+      transform 500ms var(--ease-out),
+      box-shadow 500ms var(--ease-out),
+      border-color 500ms var(--ease-out);
+  }
+  .equipo__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 50px -25px color-mix(in srgb, var(--ink) 30%, transparent);
+  }
+  .equipo__card--ink:hover { border-color: var(--ink); }
+  .equipo__card--soft:hover { border-color: var(--ink-soft); }
+  .equipo__card--accent:hover { border-color: var(--accent); }
+
+  .equipo__avatar {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: var(--surface);
+    overflow: hidden;
+    border-bottom: 1px solid color-mix(in srgb, var(--muted) 16%, transparent);
+  }
+  .equipo__avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 700ms var(--ease-out);
+  }
+  .equipo__card:hover .equipo__avatar img { transform: scale(1.04); }
+
+  .equipo__nombre {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.4rem 1.6rem 0.3rem;
+  }
+  .equipo__linea {
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 1.6rem 1rem;
+  }
+  .equipo__bio {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin: 0 1.6rem;
+  }
+</style>

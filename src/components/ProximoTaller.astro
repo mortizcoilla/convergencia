@@ -1,0 +1,206 @@
+---
+// Próximo taller destacado
+---
+
+<section class="taller" id="taller">
+  <div class="container">
+    <article class="taller__card" data-reveal-group>
+      <div class="taller__media" data-reveal>
+        <div class="taller__placeholder" aria-hidden="true">
+          <div class="taller__placeholder-inner">
+            <span class="taller__placeholder-mark">C</span>
+            <span class="taller__placeholder-dot"></span>
+          </div>
+          <div class="taller__placeholder-glow"></div>
+        </div>
+      </div>
+
+      <div class="taller__body" data-reveal>
+        <p class="eyebrow">Próximo taller · Online</p>
+
+        <h2 class="taller__title">
+          ¿Conoces <span class="accent">&nbsp;realmente&nbsp;</span> el Método Global
+          <br />de Lectura?
+        </h2>
+
+        <p class="taller__lede">
+          No se trata solo de memorizar palabras. Detrás de las primeras
+          palabras existe algo mucho más importante: significado, intención
+          y una progresión pedagógica.
+        </p>
+
+        <ul class="taller__list">
+          <li>Fundamentos del Método Global.</li>
+          <li>Estrategias para favorecer el proceso lector.</li>
+          <li>Recursos y actividades prácticas.</li>
+          <li>Orientaciones para su implementación en el aula.</li>
+          <li>Experiencias y recomendaciones para el trabajo con estudiantes.</li>
+        </ul>
+
+        <dl class="taller__meta">
+          <div>
+            <dt>Modalidad</dt>
+            <dd>Online</dd>
+          </div>
+          <div>
+            <dt>Dirigido a</dt>
+            <dd>Docentes, educadoras/es, profesionales de apoyo y estudiantes de pedagogía</dd>
+          </div>
+        </dl>
+
+        <div class="taller__cta">
+          <a href="https://instagram.com/convergencia.formacion" target="_blank" rel="noopener" class="btn btn--accent">
+            Quiero inscribirme
+          </a>
+          <a href="#contacto" class="btn btn--ghost">Más información</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .taller { background: var(--paper); }
+
+  .taller__card {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--muted) 22%, transparent);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px color-mix(in srgb, var(--ink) 18%, transparent);
+  }
+  @media (max-width: 880px) {
+    .taller__card { grid-template-columns: 1fr; }
+  }
+
+  .taller__media {
+    position: relative;
+    background: var(--ink);
+    min-height: 420px;
+    overflow: hidden;
+  }
+  @media (max-width: 880px) {
+    .taller__media { min-height: 280px; }
+  }
+
+  .taller__placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+  }
+  .taller__placeholder-inner {
+    position: relative;
+    width: 220px;
+    height: 220px;
+  }
+  .taller__placeholder-mark {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14rem;
+    color: var(--surface);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    opacity: 0.92;
+  }
+  .taller__placeholder-dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 30px var(--accent);
+  }
+  .taller__placeholder-glow {
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 60%);
+    pointer-events: none;
+    animation: glow 6s ease-in-out infinite;
+  }
+  @keyframes glow {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50%      { transform: scale(1.1); opacity: 1; }
+  }
+
+  .taller__body {
+    padding: 3rem clamp(1.5rem, 3vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .taller__title { margin-top: 0.3rem; }
+
+  .taller__lede {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-top: 0.5rem;
+  }
+
+  .taller__list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .taller__list li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .taller__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .taller__meta {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 1.5rem;
+    margin: 1rem 0 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+  }
+  .taller__meta dt {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .taller__meta dd {
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+  @media (max-width: 520px) {
+    .taller__meta { grid-template-columns: 1fr; gap: 1rem; }
+  }
+
+  .taller__cta {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+</style>

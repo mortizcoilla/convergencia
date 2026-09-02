@@ -1,0 +1,124 @@
+---
+// Isotipo + wordmark de Convergencia
+// Recreación SVG del logo con línea decorativa.
+interface Props {
+  variant?: "light" | "dark";
+  size?: "sm" | "md" | "lg" | "xl";
+  showWordmark?: boolean;
+  showTagline?: boolean;
+  showLine?: boolean;
+}
+const {
+  variant = "light",
+  size = "md",
+  showWordmark = true,
+  showTagline = false,
+  showLine = false,
+} = Astro.props;
+
+const isDark = variant === "dark";
+const stroke = isDark ? "#F3E8DC" : "#081B3A";
+const inkText = isDark ? "#F3E8DC" : "#081B3A";
+const tagText = isDark ? "#9DB1CC" : "#5F7FA3";
+const lineColor = isDark ? "#C96B4B" : "#C96B4B";
+
+const sizes = {
+  sm: { iso: 30, fontSize: "1rem", gap: "0.55rem" },
+  md: { iso: 42, fontSize: "1.3rem", gap: "0.7rem" },
+  lg: { iso: 60, fontSize: "1.8rem", gap: "0.9rem" },
+  xl: { iso: 88, fontSize: "2.6rem", gap: "1.1rem" },
+};
+const s = sizes[size];
+---
+
+<a href="/" class={`logo logo--${variant} logo--${size}`} aria-label="Convergencia — inicio">
+  <span class="logo__mark" aria-hidden="true">
+    <svg
+      class="logo__iso"
+      viewBox="0 0 100 100"
+      width={s.iso}
+      height={s.iso}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <!-- C abierta, trazo grueso con corte en parte superior derecha -->
+      <path
+        d="M 84 22 A 38 38 0 1 0 84 78"
+        stroke={stroke}
+        stroke-width="6.5"
+        stroke-linecap="square"
+        fill="none"
+      />
+      <!-- Punto terracota en la parte superior derecha, cierra la C -->
+      <circle cx="78" cy="14" r="6.5" fill="#C96B4B" />
+    </svg>
+  </span>
+
+  {showWordmark && (
+    <span class="logo__word" style={`font-size: ${s.fontSize}; color: ${inkText};`}>
+      <span class="logo__wordmark">CONVERGENCIA</span>
+      {showLine && (
+        <svg class="logo__line" viewBox="0 0 200 4" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" y1="2" x2="180" y2="2" stroke={lineColor} stroke-width="0.7" />
+          <circle cx="190" cy="2" r="1.6" fill={lineColor} />
+        </svg>
+      )}
+      {showTagline && (
+        <span class="logo__tag" style={`color: ${tagText};`}>
+          ASESORAMIENTO A EQUIPOS EDUCATIVOS
+        </span>
+      )}
+    </span>
+  )}
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity var(--t-fast) var(--ease-out);
+  }
+  .logo:hover { opacity: 0.82; }
+
+  .logo__mark {
+    flex-shrink: 0;
+    display: inline-flex;
+    transition: transform 700ms var(--ease-out);
+  }
+  .logo:hover .logo__mark { transform: rotate(-6deg); }
+
+  .logo__iso {
+    display: block;
+  }
+
+  .logo__word {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+    margin-left: 0.7rem;
+    gap: 0.5rem;
+  }
+
+  .logo__wordmark {
+    display: inline-block;
+  }
+
+  .logo__line {
+    width: 65%;
+    height: 4px;
+    margin-top: 0.2rem;
+  }
+
+  .logo__tag {
+    font-size: 0.45em;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    margin-top: 0.4rem;
+  }
+
+  .logo--sm .logo__word { margin-left: 0.55rem; gap: 0.3rem; }
+  .logo--lg .logo__word { margin-left: 0.9rem; }
+  .logo--xl .logo__word { margin-left: 1.1rem; gap: 0.7rem; }
+</style>

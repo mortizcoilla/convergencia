@@ -1,0 +1,194 @@
+---
+// Sello — 4 principios (layout vertical con buen espaciado)
+const principios = [
+  {
+    icon: "diversity",
+    title: "Inclusión y valoración de la diversidad",
+    text: "Reconocemos la diversidad como una característica propia de toda comunidad educativa, promoviendo prácticas que permitan que todos los estudiantes aprendan, participen y progresen.",
+  },
+  {
+    icon: "equity",
+    title: "Equidad y democratización del currículum",
+    text: "Promovemos oportunidades de aprendizaje accesibles y pertinentes, considerando las características, necesidades y contextos de los estudiantes. Buscamos democratizar el currículum, generando distintas formas de acceder, participar y demostrar los aprendizajes.",
+  },
+  {
+    icon: "dua",
+    title: "Diversificación y Diseño Universal para el Aprendizaje",
+    text: "Entregamos herramientas concretas para anticipar la variabilidad del aula y diseñar experiencias educativas flexibles, diversificadas y accesibles, incorporando los principios del DUA.",
+  },
+  {
+    icon: "collab",
+    title: "Colaboración y trabajo en red",
+    text: "Creemos en la fuerza del trabajo colaborativo entre equipos directivos, docentes, equipos PIE y familias para construir soluciones sostenibles y significativas en cada comunidad educativa.",
+  },
+];
+---
+
+<section class="sello" id="sello">
+  <div class="container">
+    <div class="sello__head">
+      <p class="eyebrow" data-reveal>Nuestro sello</p>
+      <h2 class="sello__title" data-reveal>
+        Nuestros principios orientan el trabajo y definen la forma
+        de acompañar a las comunidades educativas.
+      </h2>
+      <p class="sello__sub" data-reveal>
+        Se sustentan en una mirada inclusiva, práctica, contextualizada y
+        colaborativa, en coherencia con las políticas públicas y los
+        desafíos reales de cada institución.
+      </p>
+    </div>
+
+    <ul class="sello__list" data-reveal-group>
+      {principios.map((p, i) => (
+        <li class="sello__item" data-reveal>
+          <span class="sello__num" aria-hidden="true">0{i + 1}</span>
+          <div class="sello__icon" aria-hidden="true">
+            {p.icon === "diversity" && (
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="16" cy="9" r="3"/>
+                <circle cx="9"  cy="14" r="2.2"/>
+                <circle cx="23" cy="14" r="2.2"/>
+                <path d="M9 23c0-3 3-5 7-5s7 2 7 5"/>
+                <path d="M5 22c0-2 1.5-3.5 4-4M27 22c0-2-1.5-3.5-4-4"/>
+              </svg>
+            )}
+            {p.icon === "equity" && (
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M16 4v24M6 9h20M9 9l-3 9c0 1.5 1.5 2.5 3 2.5s3-1 3-2.5L9 9zM23 9l-3 9c0 1.5 1.5 2.5 3 2.5s3-1 3-2.5L23 9z"/>
+                <path d="M9 24h14" stroke-linecap="round"/>
+              </svg>
+            )}
+            {p.icon === "dua" && (
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M16 5a8 8 0 0 0-2.5 15.7V26h5v-5.3A8 8 0 0 0 16 5z" stroke-linejoin="round"/>
+                <path d="M14 26h4M13 29h6" stroke-linecap="round"/>
+                <path d="M9 10h1M22 10h1M16 8v1" stroke-linecap="round"/>
+              </svg>
+            )}
+            {p.icon === "collab" && (
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4">
+                <circle cx="10" cy="11" r="2.5"/>
+                <circle cx="22" cy="11" r="2.5"/>
+                <circle cx="16" cy="22" r="2.5"/>
+                <path d="M10 13.5v3a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-3"/>
+                <path d="M10 19.5l-1.5 4M22 19.5l1.5 4" stroke-linecap="round"/>
+              </svg>
+            )}
+          </div>
+          <div class="sello__body">
+            <h3 class="sello__card-title">{p.title}</h3>
+            <p class="sello__card-text">{p.text}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="sello__close" data-reveal>
+      <p class="sello__close-line">
+        <span>No creemos en soluciones estandarizadas.</span>
+        <span class="accent">&nbsp;Trabajamos desde la realidad<br />de cada comunidad educativa.&nbsp;</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sello {
+    background: var(--ink);
+    color: var(--surface);
+  }
+  .sello .eyebrow { color: var(--accent); }
+  .sello__head { max-width: 880px; margin-bottom: 4.5rem; }
+  .sello__title {
+    color: var(--surface);
+    margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  .sello__sub {
+    color: color-mix(in srgb, var(--surface) 70%, transparent);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  .sello__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 5rem;
+    border-top: 1px solid color-mix(in srgb, var(--surface) 14%, transparent);
+  }
+
+  .sello__item {
+    display: grid;
+    grid-template-columns: 90px 60px 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--surface) 14%, transparent);
+    transition: padding-left var(--t-base) var(--ease-out);
+  }
+  .sello__item:hover {
+    padding-left: 0.5rem;
+  }
+  @media (max-width: 720px) {
+    .sello__item {
+      grid-template-columns: 50px 1fr;
+      gap: 1.2rem;
+    }
+    .sello__icon { display: none; }
+  }
+
+  .sello__num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--accent);
+    line-height: 1;
+    padding-top: 0.2rem;
+  }
+
+  .sello__icon {
+    width: 48px;
+    height: 48px;
+    color: var(--accent);
+    transition: transform var(--t-base) var(--ease-out);
+  }
+  .sello__item:hover .sello__icon {
+    transform: scale(1.1) rotate(-4deg);
+  }
+
+  .sello__card-title {
+    color: var(--surface);
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .sello__card-text {
+    color: color-mix(in srgb, var(--surface) 78%, transparent);
+    line-height: 1.65;
+    font-size: 1.02rem;
+    max-width: 70ch;
+  }
+
+  .sello__close {
+    text-align: center;
+    padding-top: 3rem;
+    border-top: 1px solid color-mix(in srgb, var(--surface) 14%, transparent);
+  }
+  .sello__close-line {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    color: var(--surface);
+    line-height: 1.3;
+  }
+  .sello__close-line .accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+  }
+</style>
