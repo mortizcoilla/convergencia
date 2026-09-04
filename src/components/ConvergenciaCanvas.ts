@@ -21,7 +21,7 @@ export function initConvergenciaCanvas({ container, reducedMotion }: Options): (
   const renderer = new THREE.WebGLRenderer({
     alpha: true,
     antialias: true,
-    powerPreference: "high-performance",
+    powerPreference: "default",
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.setSize(w, h);
@@ -320,7 +320,13 @@ export function initConvergenciaCanvas({ container, reducedMotion }: Options): (
   };
   document.addEventListener("visibilitychange", onVisibility);
 
-  tick();
+  if (reducedMotion) {
+    // Sin animación: un solo frame estático, sin loop de rAF permanente.
+    updateLines();
+    renderer.render(scene, camera);
+  } else {
+    tick();
+  }
 
   // ---------------------------------------------------------
   // Cleanup

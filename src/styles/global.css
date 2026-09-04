@@ -7,10 +7,14 @@
   /* Paleta */
   --ink:        #081B3A;   /* navy profundo — texto principal */
   --ink-soft:   #1E3A62;   /* azul oscuro — links, headers */
-  --muted:      #5F7FA3;   /* azul gris — borders, texto secundario */
-  --accent:     #C96B4B;   /* terracota — acentos, CTAs */
+  --muted:      #5F7FA3;   /* azul gris — borders, decoración (3.4:1, no texto pequeño) */
+  --accent:     #C96B4B;   /* terracota — acentos grandes, decoración (3.0:1) */
   --surface:    #F3E8DC;   /* crema cálida — fondo principal */
   --paper:      #FBF7F1;   /* crema más clara — fondo alternativo */
+
+  /* Variantes con contraste AA (≥4.5:1 sobre crema) para texto pequeño */
+  --muted-strong:  #4A6A8F;  /* 4.6:1 sobre surface */
+  --accent-strong: #A8502F;  /* 4.5:1 sobre surface */
 
   /* Tipografía */
   --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -123,7 +127,7 @@ p { line-height: 1.65; }
   font-weight: 600;
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--muted-strong);
 }
 
 /* ==========================================================
@@ -143,6 +147,11 @@ p { line-height: 1.65; }
 section {
   padding-block: clamp(4rem, 9vw, 7rem);
   position: relative;
+}
+
+/* Los destinos de anclas no quedan tapados por el nav fijo */
+[id] {
+  scroll-margin-top: 5rem;
 }
 
 section + section {
@@ -192,7 +201,7 @@ section + section {
 }
 
 .btn--accent {
-  background: var(--accent);
+  background: var(--accent-strong);
   color: var(--surface);
 }
 .btn--accent:hover {
@@ -202,8 +211,9 @@ section + section {
 
 /* ==========================================================
    6. Reveals (animación de entrada)
+   Solo con JS disponible: sin JS el contenido es visible siempre.
    ========================================================== */
-[data-reveal] {
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
   transition:
@@ -212,7 +222,7 @@ section + section {
   will-change: opacity, transform;
 }
 
-[data-reveal].is-visible {
+.js [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -247,6 +257,23 @@ section + section {
 /* ==========================================================
    8. Accesibilidad
    ========================================================== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: top var(--t-fast) var(--ease-out);
+}
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -256,7 +283,7 @@ section + section {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  [data-reveal] { opacity: 1; transform: none; }
+  .js [data-reveal] { opacity: 1; transform: none; }
 }
 
 ::selection {

@@ -11,7 +11,7 @@ interface Props {
 const {
   title = "Convergencia — Asesoramiento a equipos educativos",
   description = "Un espacio de formación y asesoramiento que nace desde la experiencia educativa. Acompañamos a docentes, equipos directivos y equipos PIE.",
-  ogImage = "/images/og-image.png",
+  ogImage = "/images/og-image.jpg",
 } = Astro.props;
 
 const siteUrl = "https://convergencia.pro";
@@ -27,7 +27,7 @@ const jsonLd = {
       "@id": `${siteUrl}#organization`,
       "name": "Convergencia",
       "url": siteUrl,
-      "logo": `${siteUrl}/images/og-image.png`,
+      "logo": `${siteUrl}/images/logo.png`,
       "description": description,
       "sameAs": [
         "https://www.instagram.com/conve.rgencia",
@@ -35,7 +35,7 @@ const jsonLd = {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer support",
-        "email": "hola@convergencia.cl",
+        "email": "hola@convergencia.pro",
         "availableLanguage": ["es-CL", "es"],
       },
     },
@@ -71,10 +71,17 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#081B3A" />
     <link rel="canonical" href={fullUrl} />
     <title>{title}</title>
+
+    <!-- Marca .js lo antes posible: los reveals solo aplican con JS -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -82,6 +89,7 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={fullImage} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Convergencia — Asesoramiento a equipos educativos" />
@@ -107,8 +115,9 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
+    <a href="#contenido" class="skip-link">Saltar al contenido</a>
     <Nav />
-    <main>
+    <main id="contenido" tabindex="-1">
       <slot />
     </main>
     <Footer />

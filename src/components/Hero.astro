@@ -186,13 +186,15 @@
 </style>
 
 <script>
-  import { initConvergenciaCanvas } from "./ConvergenciaCanvas";
-
   const container = document.querySelector<HTMLElement>("[data-hero-canvas]");
   if (container) {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const destroy = initConvergenciaCanvas({ container, reducedMotion });
-    // Cleanup en navegación client-side de Astro
-    document.addEventListener("astro:before-swap", destroy, { once: true });
+    // Dynamic import: three.js (500+ KB) se carga en un chunk separado,
+    // sin bloquear el render inicial de la página.
+    import("./ConvergenciaCanvas").then(({ initConvergenciaCanvas }) => {
+      const destroy = initConvergenciaCanvas({ container, reducedMotion });
+      // Cleanup en navegación client-side de Astro
+      document.addEventListener("astro:before-swap", destroy, { once: true });
+    });
   }
 </script>

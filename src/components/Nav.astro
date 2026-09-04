@@ -22,10 +22,26 @@ const links = [
 
     <a href="#contacto" class="btn btn--primary nav__cta">Pedir asesoría</a>
 
-    <button class="nav__toggle" aria-label="Abrir menú" data-nav-toggle>
-      <span></span><span></span><span></span>
+    <button
+      class="nav__toggle"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      data-nav-toggle
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
     </button>
   </div>
+
+  <!-- Menú móvil -->
+  <nav class="nav__menu" id="nav-menu" aria-label="Navegación móvil" data-nav-menu hidden>
+    {links.map((l) => (
+      <a href={l.href} class="nav__menu-link">{l.label}</a>
+    ))}
+    <a href="#contacto" class="btn btn--primary nav__menu-cta">Pedir asesoría</a>
+  </nav>
 </header>
 
 <style>
@@ -42,7 +58,8 @@ const links = [
     transition: border-color var(--t-base) var(--ease-out),
                 background var(--t-base) var(--ease-out);
   }
-  .nav.is-scrolled {
+  .nav.is-scrolled,
+  .nav.is-open {
     border-bottom-color: color-mix(in srgb, var(--muted) 18%, transparent);
   }
 
@@ -84,6 +101,39 @@ const links = [
     transition: transform var(--t-base) var(--ease-out),
                 opacity var(--t-base) var(--ease-out);
   }
+  .nav__toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+
+  /* Menú móvil desplegable */
+  .nav__menu {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem clamp(1.25rem, 4vw, 2.5rem) 1.5rem;
+    background: color-mix(in srgb, var(--surface) 96%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--muted) 18%, transparent);
+  }
+  .nav__menu.is-open {
+    display: flex;
+  }
+  .nav__menu-link {
+    padding: 0.85rem 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--ink);
+    border-bottom: 1px solid color-mix(in srgb, var(--muted) 12%, transparent);
+  }
+  .nav__menu-cta {
+    margin-top: 1rem;
+    justify-content: center;
+  }
 
   @media (max-width: 880px) {
     .nav__links { display: none; }
@@ -94,11 +144,41 @@ const links = [
 
 <script>
   const nav = document.querySelector("[data-nav]");
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const menu = document.querySelector<HTMLElement>("[data-nav-menu]");
+
   if (nav) {
     const onScroll = () => {
       nav.classList.toggle("is-scrolled", window.scrollY > 8);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+  }
+
+  if (toggle && menu && nav) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+      menu.classList.toggle("is-open", open);
+      nav.classList.toggle("is-open", open);
+      menu.hidden = !open;
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    // Cerrar al elegir un destino
+    menu.addEventListener("click", (e) => {
+      if ((e.target as HTMLElement).closest("a")) setOpen(false);
+    });
+
+    // Cerrar con Escape y devolver el foco al botón
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
   }
 </script>

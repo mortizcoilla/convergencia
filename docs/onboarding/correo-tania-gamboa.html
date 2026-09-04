@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Configuración de correo · Tania Gamboa</title>
+<style>
+  body { margin: 0; padding: 0; background: #F3E8DC; font-family: "Manrope", system-ui, sans-serif; color: #081B3A; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 32px 24px; }
+  .email { background: #FBF7F1; border: 1px solid rgba(95,127,163,0.16); border-radius: 4px; padding: 32px; }
+  h1 { font-family: "Lora", Georgia, serif; font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #C96B4B; margin: 0 0 24px; }
+  h2 { font-family: "Lora", Georgia, serif; font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+  p { line-height: 1.6; margin: 0 0 14px; }
+  table.config { width: 100%; border-collapse: collapse; margin: 12px 0 16px; font-size: 14px; }
+  table.config th, table.config td { text-align: left; padding: 8px 10px; border-bottom: 1px solid rgba(95,127,163,0.2); }
+  table.config th { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #C96B4B; }
+  code { background: #F3E8DC; padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: #1E3A62; }
+  .callout { background: #F3E8DC; border-left: 3px solid #C96B4B; padding: 12px 16px; border-radius: 0 4px 4px 0; margin: 16px 0; font-size: 14px; }
+  .callout strong { color: #1E3A62; }
+  ol, ul { line-height: 1.7; margin: 0 0 14px; }
+  ol li, ul li { margin-bottom: 6px; }
+  .signature-box { margin-top: 28px; padding-top: 20px; border-top: 1.5px solid #C96B4B; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">Convergencia · Onboarding de correo</p>
+  <div class="email">
+
+    <h1>Tu correo @convergencia.pro · configuración paso a paso</h1>
+
+    <p>Hola Tania,</p>
+
+    <p>Te dejo las instrucciones detalladas para configurar tu correo <code>tania.gamboa@convergencia.pro</code> en <strong>Outlook</strong> o <strong>Thunderbird</strong> — usa el que prefieras. También está tu firma personalizada lista para instalar al final.</p>
+
+    <div class="callout">
+      <strong>🔒 Sobre la contraseña:</strong> está incluida en este email para que configures la cuenta directo. Bórrala de tu bandeja (y de la papelera) una vez que la cuenta esté configurada. Si te parece más seguro, cámbiala después desde el webmail de cPanel.
+    </div>
+
+    <h2>1. Datos del servidor</h2>
+
+    <table class="config">
+      <tr><th></th><th>Entrada (IMAP)</th><th>Salida (SMTP)</th></tr>
+      <tr><th>Servidor</th><td><code>mail.convergencia.pro</code></td><td><code>mail.convergencia.pro</code></td></tr>
+      <tr><th>Puerto</th><td><code>993</code></td><td><code>465</code></td></tr>
+      <tr><th>Cifrado</th><td>SSL/TLS</td><td>SSL/TLS</td></tr>
+      <tr><th>Autenticación</th><td>Contraseña normal</td><td>Contraseña normal</td></tr>
+      <tr><th>Usuario</th><td><code>tania.gamboa@convergencia.pro</code></td><td><code>tania.gamboa@convergencia.pro</code></td></tr>
+      <tr><th>Contraseña</th><td><code style="background: #fff3cd; color: #856404; padding: 2px 8px; border-radius: 3px; font-weight: 600;">ZdKUif1nnV3ahLm8</code></td><td>(la misma)</td></tr>
+    </table>
+
+    <h2>2. Configuración en Outlook (Windows o Mac)</h2>
+    <ol>
+      <li>Abre Outlook → menú <strong>Archivo</strong> → <strong>Información</strong> → <strong>Agregar cuenta</strong></li>
+      <li>Elige <em>"Configurar manualmente las opciones del servidor o tipos de servidor adicionales"</em> → <strong>Siguiente</strong></li>
+      <li>Selecciona <strong>POP o IMAP</strong> → <strong>Siguiente</strong></li>
+      <li>En <em>Información del servidor</em>:
+        <ul>
+          <li>Tipo de cuenta: <strong>IMAP</strong></li>
+          <li>Servidor de entrada: <code>mail.convergencia.pro</code></li>
+          <li>Servidor de salida: <code>mail.convergencia.pro</code></li>
+        </ul>
+      </li>
+      <li>En <em>Información de inicio de sesión</em>:
+        <ul>
+          <li>Usuario: <code>tania.gamboa@convergencia.pro</code></li>
+          <li>Contraseña: la de arriba</li>
+        </ul>
+      </li>
+      <li>Click <strong>Más configuraciones…</strong> → pestaña <strong>Servidor de salida</strong>:
+        <ul>
+          <li>Marca <em>"Mi servidor de salida (SMTP) requiere autenticación"</em></li>
+          <li>Marca <em>"Usar la misma configuración que mi servidor de entrada"</em></li>
+        </ul>
+      </li>
+      <li>Pestaña <strong>Avanzadas</strong>:
+        <ul>
+          <li>Servidor de entrada (IMAP): <code>993</code> / tipo de conexión cifrada: <strong>SSL/TLS</strong></li>
+          <li>Servidor de salida (SMTP): <code>465</code> / tipo de conexión cifrada: <strong>SSL/TLS</strong></li>
+        </ul>
+      </li>
+      <li><strong>Siguiente</strong> → <em>"Probar configuración de la cuenta"</em> → debe dar todo OK con tildes verdes → <strong>Cerrar</strong> → <strong>Siguiente</strong> → <strong>Finalizar</strong></li>
+    </ol>
+
+    <h2>3. Configuración en Thunderbird</h2>
+    <ol>
+      <li>Abre Thunderbird → si es primera vez, va directo al asistente; si no, click en <strong>☰ → Nueva cuenta → Correo electrónico</strong></li>
+      <li>Llena: tu nombre completo (<em>Tania Gamboa Chandia</em>) y tu dirección <code>tania.gamboa@convergencia.pro</code> → <strong>Continuar</strong></li>
+      <li>Thunderbird intentará autoconfigurar; cuando lo haga, click en <strong>"Configurar manualmente"</strong> y llena:
+        <ul>
+          <li><strong>Entrada:</strong> IMAP / <code>mail.convergencia.pro</code> / Puerto <code>993</code> / SSL/TLS / Autenticación: Contraseña normal / Usuario: <code>tania.gamboa@convergencia.pro</code></li>
+          <li><strong>Salida:</strong> SMTP / <code>mail.convergencia.pro</code> / Puerto <code>465</code> / SSL/TLS / Autenticación: Contraseña normal / Usuario: <code>tania.gamboa@convergencia.pro</code></li>
+        </ul>
+      </li>
+      <li>Click <strong>"Re-test"</strong> → debe confirmar ambas conexiones → <strong>Listo</strong></li>
+    </ol>
+
+    <h2>4. Instalar tu firma personalizada</h2>
+    <p>Tu firma está diseñada con la línea editorial de Convergencia. Está adjunta a este email como archivo <code>firma-tania-gamboa.html</code>.</p>
+    <p><strong>Outlook:</strong></p>
+    <ol>
+      <li>Abre el archivo adjunto <code>firma-tania-gamboa.html</code> en el navegador (doble click)</li>
+      <li>En Outlook: <strong>Archivo → Opciones → Correo → Firmas…</strong></li>
+      <li>Click <strong>Nueva</strong> → ponle de nombre "Convergencia" → en el editor, click derecho → <strong>Ver código fuente</strong> (o pega con Ctrl+V directamente si ya copiaste el HTML)</li>
+      <li>Copia TODO el contenido del archivo HTML (Ctrl+A, Ctrl+C) y pégalo en el editor de firma</li>
+      <li>En <em>"Elija la firma predeterminada"</em>, selecciona "Convergencia" para mensajes nuevos y respuestas → <strong>Aceptar</strong></li>
+    </ol>
+    <p><strong>Thunderbird:</strong></p>
+    <ol>
+      <li>Abre <strong>Configuración de la cuenta</strong> (☰ → Configuración o el ícono de engranaje)</li>
+      <li>Bajo tu cuenta, click <strong>"Manage Identities"</strong> → click en tu identidad</li>
+      <li>Marca <strong>"Use HTML"</strong> y pega el contenido del archivo HTML en el cuadro de firma</li>
+      <li><strong>Aceptar</strong> → cerrar</li>
+    </ol>
+
+    <h2>5. Prueba final</h2>
+    <p>Mándame un email de prueba a <code>hola@convergencia.pro</code> cuando termines, para confirmar que sale bien. Si te llegas a trabar en algún paso, escríbeme y lo vemos juntas.</p>
+
+    <p>Saludos,<br>
+    Miguel</p>
+
+    <div class="signature-box">
+      <p style="font-size: 12px; color: #5F7FA3; margin: 0;"><em>Adjunto: <code>firma-tania-gamboa.html</code></em></p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

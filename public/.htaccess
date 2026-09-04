@@ -1,0 +1,36 @@
+# Convergencia — Apache (HostGator)
+# Este archivo se copia a dist/ en cada build y se sube con el deploy.
+
+# --- Canonicalización: HTTPS + dominio apex (sin www) ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.convergencia\.pro$ [NC]
+  RewriteRule ^ https://convergencia.pro%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Página de error personalizada ---
+ErrorDocument 404 /404.html
+
+# --- Cabeceras de seguridad ---
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+  # HSTS: activar solo cuando HTTPS esté confirmado en todo el dominio.
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# --- Caché de assets estáticos (los de _astro/ llevan hash en el nombre) ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

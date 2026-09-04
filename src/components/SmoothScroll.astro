@@ -27,6 +27,8 @@
     document.addEventListener("click", (e) => {
       const target = (e.target as HTMLElement).closest("a[href^='#']") as HTMLAnchorElement | null;
       if (!target) return;
+      // El skip-link usa comportamiento nativo (mueve el foco, no solo el scroll)
+      if (target.classList.contains("skip-link")) return;
       const id = target.getAttribute("href");
       if (!id || id === "#") return;
       const el = document.querySelector(id);

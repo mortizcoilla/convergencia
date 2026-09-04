@@ -12,7 +12,7 @@ const socias = [
   {
     nombre: "Tania Gamboa Chandia",
     linea: "Inclusión y PIE",
-    bio: "Educadora diferencial, candidata a magíster en Gestión y Dirección Educacional. Más de 13 años en Programas de Integración Escolar: coordinación de equipos, implementación de DUA y diseño de prácticas inclusivas.",
+    bio: "Educadora Diferencial y cursando Magíster en Gestión Educacional. Coordinadora PIE, docente universitaria y correctora de portafolios. Especialista en inclusión y gestión educativa, comprometida con el fortalecimiento de prácticas pedagógicas inclusivas y el acompañamiento de equipos educativos.",
     email: "tania.gamboa@convergencia.pro",
     img: "/images/team/tania-gamboa.webp",
     acento: "soft",
@@ -43,7 +43,7 @@ const socias = [
       {socias.map((s) => (
         <article class={`equipo__card equipo__card--${s.acento}`} data-reveal>
           <div class="equipo__avatar">
-            <img src={`${s.img}?v=2`} alt={`Caricatura de ${s.nombre}`} loading="lazy" />
+            <img src={`${s.img}?v=3`} alt={`Caricatura de ${s.nombre}`} loading="lazy" width="800" height="800" />
           </div>
           <h3 class="equipo__nombre">{s.nombre}</h3>
           <p class="equipo__linea">{s.linea}</p>
@@ -77,6 +77,8 @@ const socias = [
   }
 
   .equipo__card {
+    display: flex;
+    flex-direction: column;
     padding: 0 0 2.2rem;
     background: var(--paper);
     border: 1px solid color-mix(in srgb, var(--muted) 16%, transparent);
@@ -120,7 +122,7 @@ const socias = [
     font-weight: 600;
     letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-strong);
     margin: 0 1.6rem 1rem;
   }
   .equipo__bio {
@@ -128,6 +130,7 @@ const socias = [
     font-size: 0.92rem;
     line-height: 1.6;
     margin: 0 1.6rem;
+    flex: 1;
   }
 
   .equipo__contact {
@@ -142,15 +145,15 @@ const socias = [
     letter-spacing: 0.04em;
     text-transform: uppercase;
     text-align: center;
-    color: var(--accent);
+    color: var(--accent-strong);
     background: transparent;
-    border: 1.5px solid var(--accent);
+    border: 1.5px solid var(--accent-strong);
     border-radius: 4px;
     text-decoration: none;
     transition: background 220ms ease, color 220ms ease, transform 220ms ease;
   }
   .equipo__contact:hover {
-    background: var(--accent);
+    background: var(--accent-strong);
     color: var(--paper);
     transform: translateY(-1px);
   }

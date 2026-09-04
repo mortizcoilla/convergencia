@@ -65,11 +65,12 @@ try {
 
         Write-Host "[*] Uploading a ${user}@${sftpHost}:$port$remote (SFTP via SCP)..." -ForegroundColor Cyan
 
+        # "dist/." (en vez de "dist/*") incluye dotfiles como .htaccess
         $scpArgs = @("-r", "-P", "$port")
         if ($keyPath) {
             $scpArgs += @("-i", $keyPath)
         }
-        $scpArgs += @("$dist/*", "${user}@${sftpHost}:${remote}")
+        $scpArgs += @("$dist/.", "${user}@${sftpHost}:${remote}")
 
         & scp @scpArgs
 

@@ -1,0 +1,58 @@
+---
+// 404 — página standalone (sin Nav: sus anclas solo existen en la home)
+import "../styles/global.css";
+import Logo from "../components/Logo.astro";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#081B3A" />
+    <title>Página no encontrada — Convergencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="notfound">
+      <Logo size="lg" />
+      <p class="eyebrow notfound__code">Error 404</p>
+      <h1 class="notfound__title">
+        Esta página se fue <span class="accent">&nbsp;de recreo&nbsp;</span>.
+      </h1>
+      <p class="notfound__text">
+        La dirección que buscas no existe o fue movida.
+        Volvamos al inicio y seguimos desde ahí.
+      </p>
+      <a href="/" class="btn btn--primary">Volver al inicio</a>
+    </main>
+  </body>
+</html>
+
+<style>
+  .notfound {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  .notfound__code { margin-top: 2rem; }
+  .notfound__title { max-width: 18ch; }
+  .notfound__text {
+    color: var(--ink-soft);
+    max-width: 44ch;
+    margin-bottom: 1rem;
+  }
+</style>

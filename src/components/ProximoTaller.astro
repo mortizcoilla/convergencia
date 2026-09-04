@@ -1,5 +1,27 @@
 ---
 // Próximo taller destacado
+
+// JSON-LD: Event — permite resultado enriquecido en Google.
+// TODO: cuando haya fecha confirmada, agregar "startDate" (p. ej. "2026-10-15T18:00:00-03:00")
+// y "endDate"; sin fecha Google no muestra el evento enriquecido.
+const eventLd = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "¿Conoces realmente el Método Global de Lectura?",
+  "description": "Taller online sobre los fundamentos del Método Global de Lectura: estrategias para favorecer el proceso lector, recursos prácticos y orientaciones para su implementación en el aula.",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://convergencia.pro/#taller",
+  },
+  "organizer": { "@id": "https://convergencia.pro#organization" },
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Docentes, educadoras/es, profesionales de apoyo y estudiantes de pedagogía",
+  },
+  "inLanguage": "es-CL",
+};
 ---
 
 <section class="taller" id="taller">
@@ -19,7 +41,7 @@
         <p class="eyebrow">Próximo taller · Online</p>
 
         <h2 class="taller__title">
-          ¿Conoces <span class="accent">&nbsp;realmente&nbsp;</span> el Método Global
+          ¿Conoces <span class="accent">realmente&nbsp;</span> el Método Global
           <br />de Lectura?
         </h2>
 
@@ -60,6 +82,8 @@
       </div>
     </article>
   </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(eventLd)} />
 </section>
 
 <style>
@@ -188,7 +212,7 @@
     font-weight: 600;
     letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--muted-strong);
     margin-bottom: 0.3rem;
   }
   .taller__meta dd {
