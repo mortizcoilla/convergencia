@@ -1,6 +1,24 @@
 /* Convergencia — Sistema visual */
 
 /* ==========================================================
+   0. Fuentes self-hosted (subset latin, variable)
+   ========================================================== */
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/manrope-var.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Lora";
+  src: url("/fonts/lora-italic-var.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ==========================================================
    1. Tokens
    ========================================================== */
 :root {

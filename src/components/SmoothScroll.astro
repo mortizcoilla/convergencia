@@ -5,39 +5,50 @@
 <div data-smooth-scroll hidden></div>
 
 <script>
-  import Lenis from "lenis";
-
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reduced) {
-    const lenis = new Lenis({
-      duration: 1.15,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      wheelMultiplier: 1.0,
-      touchMultiplier: 1.4,
-    });
+  // Lenis intercepta la rueda y corre un rAF permanente: en táctil/móvil o
+  // hardware limitado genera tareas largas en el hilo principal sin aportar
+  // nada (su beneficio es el scroll con rueda en escritorio). Ahí ni se descarga.
+  const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+  const smallScreen = window.matchMedia("(max-width: 880px)").matches;
+  const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
+  const lowPower =
+    (navigator.hardwareConcurrency ?? 8) <= 4 ||
+    (nav.deviceMemory ?? 8) <= 4 ||
+    nav.connection?.saveData === true;
 
-    function raf(time: number) {
-      lenis.raf(time);
+  if (!reduced && !coarsePointer && !smallScreen && !lowPower) {
+    import("lenis").then(({ default: Lenis }) => {
+      const lenis = new Lenis({
+        duration: 1.15,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.4,
+      });
+
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
       requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
 
-    // Anclas suaves: interceptar clicks en links internos
-    document.addEventListener("click", (e) => {
-      const target = (e.target as HTMLElement).closest("a[href^='#']") as HTMLAnchorElement | null;
-      if (!target) return;
-      // El skip-link usa comportamiento nativo (mueve el foco, no solo el scroll)
-      if (target.classList.contains("skip-link")) return;
-      const id = target.getAttribute("href");
-      if (!id || id === "#") return;
-      const el = document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      lenis.scrollTo(el as HTMLElement, { offset: -80, duration: 1.4 });
+      // Anclas suaves: interceptar clicks en links internos
+      document.addEventListener("click", (e) => {
+        const target = (e.target as HTMLElement).closest("a[href^='#']") as HTMLAnchorElement | null;
+        if (!target) return;
+        // El skip-link usa comportamiento nativo (mueve el foco, no solo el scroll)
+        if (target.classList.contains("skip-link")) return;
+        const id = target.getAttribute("href");
+        if (!id || id === "#") return;
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        lenis.scrollTo(el as HTMLElement, { offset: -80, duration: 1.4 });
+      });
+
+      // Limpieza en navegación
+      document.addEventListener("astro:before-swap", () => lenis.destroy(), { once: true });
     });
-
-    // Limpieza en navegación
-    document.addEventListener("astro:before-swap", () => lenis.destroy(), { once: true });
   }
 </script>
