@@ -315,8 +315,19 @@ export function initConvergenciaCanvas({ container, reducedMotion }: Options): (
     renderer.render(scene, camera);
   };
 
+  // Pausar cuando el hero sale del viewport (ahorro de CPU/batería)
+  let inView = true;
+  const viewObserver = new IntersectionObserver(
+    ([entry]) => {
+      inView = entry.isIntersecting;
+      running = inView && !document.hidden && !reducedMotion;
+    },
+    { threshold: 0.02 }
+  );
+  viewObserver.observe(container);
+
   const onVisibility = () => {
-    running = !document.hidden && !reducedMotion;
+    running = inView && !document.hidden && !reducedMotion;
   };
   document.addEventListener("visibilitychange", onVisibility);
 
@@ -333,6 +344,7 @@ export function initConvergenciaCanvas({ container, reducedMotion }: Options): (
   // ---------------------------------------------------------
   return () => {
     cancelAnimationFrame(rafId);
+    viewObserver.disconnect();
     container.removeEventListener("pointermove", onPointerMove);
     window.removeEventListener("resize", onResize);
     document.removeEventListener("visibilitychange", onVisibility);

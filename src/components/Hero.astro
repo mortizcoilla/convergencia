@@ -189,12 +189,30 @@
   const container = document.querySelector<HTMLElement>("[data-hero-canvas]");
   if (container) {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Dynamic import: three.js (500+ KB) se carga en un chunk separado,
-    // sin bloquear el render inicial de la página.
-    import("./ConvergenciaCanvas").then(({ initConvergenciaCanvas }) => {
-      const destroy = initConvergenciaCanvas({ container, reducedMotion });
-      // Cleanup en navegación client-side de Astro
-      document.addEventListener("astro:before-swap", destroy, { once: true });
-    });
+    // El WebGL cuesta ~500 KB de JS + loop de render continuo: en móviles y
+    // dispositivos de baja potencia bloquea el hilo principal (TBT). El hero
+    // se ve bien solo con sus veladuras, así que ahí no se carga.
+    const smallScreen = window.matchMedia("(max-width: 880px)").matches;
+    const nav = navigator as Navigator & { deviceMemory?: number; connection?: { saveData?: boolean } };
+    const lowPower =
+      (navigator.hardwareConcurrency ?? 8) <= 4 ||
+      (nav.deviceMemory ?? 8) <= 4 ||
+      nav.connection?.saveData === true;
+
+    if (!smallScreen && !lowPower) {
+      const start = () =>
+        import("./ConvergenciaCanvas").then(({ initConvergenciaCanvas }) => {
+          const destroy = initConvergenciaCanvas({ container, reducedMotion });
+          // Cleanup en navegación client-side de Astro
+          document.addEventListener("astro:before-swap", destroy, { once: true });
+        });
+
+      // Cargar después del load: el arranque de la página queda libre de bloqueo
+      if (document.readyState === "complete") {
+        start();
+      } else {
+        window.addEventListener("load", start, { once: true });
+      }
+    }
   }
 </script>

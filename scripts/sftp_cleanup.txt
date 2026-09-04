@@ -1,0 +1,7 @@
+rm /home1/exrynzte/public_html/images/og-image.png
+rm /home1/exrynzte/public_html/images/portfolio/acompanamiento.webp
+rm /home1/exrynzte/public_html/images/portfolio/currículum.webp
+rm /home1/exrynzte/public_html/images/portfolio/formacion.webp
+rm /home1/exrynzte/public_html/images/portfolio/inclusion.webp
+rmdir /home1/exrynzte/public_html/images/portfolio
+ls /home1/exrynzte/public_html/images/

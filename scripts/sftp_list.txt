@@ -1,0 +1,2 @@
+ls /home1/exrynzte/public_html/images/
+ls /home1/exrynzte/public_html/images/portfolio/
